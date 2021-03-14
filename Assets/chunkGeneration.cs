@@ -2,10 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(MeshFilter))]
+[RequireComponent(typeof(MeshRenderer))]
 public class chunkGeneration : MonoBehaviour
 {
     [Header("Transform of the Chunk")]
-    public Vector3 center;
     public int Size = 0;
     public int Height = 0;
 
@@ -14,21 +15,14 @@ public class chunkGeneration : MonoBehaviour
 
     //Private variables
     private GameObject Cube;
-    
-    
-    //re-generating
-    private Dictionary<Vector3, GameObject> objects;
 
     private void Start()
     {
         //Load Cube Object
-
         Cube = Resources.Load("cube") as GameObject;
-        objects = new Dictionary<Vector3, GameObject>();
-    }
-
-    private void Update()
-    {
+        
+        List<CombineInstance> combine = new List<CombineInstance>();
+    
         //Plan here is to Instantiate cubes into a chunk
 
         for (int z = 0; z < Size; z++)
@@ -37,25 +31,23 @@ public class chunkGeneration : MonoBehaviour
             {
                 for (int x = 0; x < Size; x++)
                 {
-                    if (Noise3D(x * noiseScale, y * noiseScale, z * noiseScale) >= 0.5f && !objects.ContainsKey(new Vector3(x, y, z)))
+                    if (Noise3D(x * noiseScale, y * noiseScale, z * noiseScale) >= 0.415f)
                     {
                         GameObject tempCube = Instantiate(Cube, new Vector3(x, y, z), Quaternion.identity);
-                        
-                        objects.Add(tempCube.transform.position, tempCube);
-                    }
 
-                    if (Noise3D(x * noiseScale, y * noiseScale, z * noiseScale) >= 0.5f &&
-                        !objects[new Vector3(x, y, z)].activeInHierarchy)
-                    {
-                        objects[new Vector3(x, y, z)].SetActive(true);
-                    }
-                    if (Noise3D(x * noiseScale, y * noiseScale, z * noiseScale) < 0.5f && objects.ContainsKey(new Vector3(x, y, z)))
-                    {
-                        objects[new Vector3(x, y, z)].SetActive(false);
+                        CombineInstance combineInstance = new CombineInstance();
+                        combineInstance.mesh = tempCube.GetComponent<MeshFilter>().mesh;
+                        combineInstance.transform = tempCube.transform.localToWorldMatrix;
+                        
+                        combine.Add(combineInstance);
+                        tempCube.SetActive(false);
                     }
                 }
             }
         }
+
+        GetComponent<MeshFilter>().mesh = new Mesh();
+        GetComponent<MeshFilter>().mesh.CombineMeshes(combine.ToArray());
     }
 
     private float Noise3D(float x, float y, float z)
