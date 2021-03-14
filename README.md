@@ -11,4 +11,4 @@
 
 
 ### 3D Noise 1rst test without mesh combining
-<img src="https://github.com/WiTekh/Terrain-Generation/blob/master/3DNoise_img1.png" width="250">
+<img src="https://github.com/WiTekh/Terrain-Generation/blob/master/Images/3DNoise_img1.png" width="250">
