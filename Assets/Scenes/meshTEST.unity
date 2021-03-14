@@ -242,9 +242,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55e4a9a3d3982483aa766edac045614e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  center: {x: -16, y: 0, z: -16}
+  center: {x: 0, y: 0, z: 0}
   Size: 32
   Height: 32
+  noiseScale: 0.1
 --- !u!4 &348418511
 Transform:
   m_ObjectHideFlags: 0
