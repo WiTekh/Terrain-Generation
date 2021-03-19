@@ -18,7 +18,7 @@ public class ProceduralGen : MonoBehaviour {
     
     void Start()
     {
-        viewer = transform;
+        viewer = GameObject.FindWithTag("Player").transform;
         viewerPosition = new Vector2(viewer.position.x, viewer.position.z);
         
         chunkSize = 16;
@@ -73,7 +73,7 @@ public class ProceduralGen : MonoBehaviour {
             Vector3 positionV3 = new Vector3(position.x, parent.position.y,position.y);
 
             meshObject = Instantiate(chunk, positionV3, Quaternion.identity);
-            meshObject.GetComponent<chunkGeneration>().chunkPosition = positionV3;
+            meshObject.GetComponent<chunkGeneration>().chunkPosition = new Vector3(position.x,0f, position.y);
             meshObject.GetComponent<chunkGeneration>().Size = size;
             meshObject.transform.position = positionV3;
             meshObject.transform.parent = parent;

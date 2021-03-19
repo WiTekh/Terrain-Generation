@@ -95,7 +95,7 @@ MonoBehaviour:
   chunkPosition: {x: 0, y: 0, z: 0}
   Size: 16
   startCave: 0
-  endCave: 3
-  endLandscape: 7
+  endCave: 10
+  endLandscape: 14
   noise3dScale: 0.1
   noise2dScale: 0.1

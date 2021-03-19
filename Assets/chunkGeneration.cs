@@ -26,7 +26,7 @@ public class chunkGeneration : MonoBehaviour
         //Load Cube Object
         Cube = Resources.Load("cube") as GameObject;
         
-        List<CombineInstance> combine = new List<CombineInstance>();
+        //List<CombineInstance> combine = new List<CombineInstance>();
         
         for (int z = 0; z < Size; z++)
         {
