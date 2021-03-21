@@ -92,6 +92,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55e4a9a3d3982483aa766edac045614e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mats:
+  - {fileID: 2100000, guid: 71217f5f6158f4dab89ee3b9eebe3893, type: 2}
+  - {fileID: 2100000, guid: 1e2fdeba4a4894961ba9a3a81dcc90dc, type: 2}
+  - {fileID: 2100000, guid: 5ea7c0046cad143c0a65fabf9ef8377e, type: 2}
+  - {fileID: 2100000, guid: ffd114b0cfae3463f9ce718647f03f59, type: 2}
+  - {fileID: 2100000, guid: a98920a5036864f5e8e6d051c21161f0, type: 2}
+  - {fileID: 2100000, guid: 16fa97abcb0ea4f60951959d8cfc5f75, type: 2}
   chunkPosition: {x: 0, y: 0, z: 0}
   Size: 16
   startCave: 0
@@ -99,3 +106,4 @@ MonoBehaviour:
   endLandscape: 14
   noise3dScale: 0.1
   noise2dScale: 0.1
+  caveNoiseLimit: 0.6
